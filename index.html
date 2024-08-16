@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Datos formulario</h2>
+    <p id="formData"></p>
+
+    <script>
+        function Enviar(formId, nameFieldId, emailFieldId, outputElementId) {
+            document.getElementById(formId).addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                let nombre = document.getElementById(nameFieldId).value;
+                let email = document.getElementById(emailFieldId).value;
+
+               
+                let datos = document.getElementById(outputElementId).textContent;
+
+                let nuevosdatos = "Nombre: " + nombre + ", Email: " + email;
+                if (datos) {
+                    document.getElementById(outputElementId).textContent = datos + " | " + nuevosdatos;
+                } else {
+                    document.getElementById(outputElementId).textContent = nuevosdatos;
+                }
+            });
+        }
+
+        // Llamada a la función con los parámetros correspondientes
+        Enviar("myForm", "name", "email", "formData");
+    </script>
+    
+</body>
+</html>
